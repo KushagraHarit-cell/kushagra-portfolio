@@ -2,6 +2,8 @@ export interface Project {
   id: number;
   title: string;
   description: string;
+  problem?: string;
+  solution?: string;
   tags: string[];
   image: string;
   demo: string;

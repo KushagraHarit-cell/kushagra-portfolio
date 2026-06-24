@@ -8,10 +8,10 @@ import { services } from '@/lib/data';
 const icons = { Code2, Layout, Pen, Zap } as Record<string, React.ElementType>;
 
 const serviceColors = [
-  { glow: 'rgba(99,102,241,0.25)', border: 'hover:border-indigo-500/50', icon: 'text-indigo-400', bg: 'from-indigo-500/10 to-purple-500/10' },
-  { glow: 'rgba(16,185,129,0.25)', border: 'hover:border-emerald-500/50', icon: 'text-emerald-400', bg: 'from-emerald-500/10 to-teal-500/10' },
-  { glow: 'rgba(249,115,22,0.25)', border: 'hover:border-orange-500/50', icon: 'text-orange-400', bg: 'from-orange-500/10 to-red-500/10' },
-  { glow: 'rgba(245,158,11,0.25)', border: 'hover:border-amber-500/50', icon: 'text-amber-400', bg: 'from-amber-500/10 to-yellow-500/10' },
+  { glow: 'rgba(99,102,241,0.35)', border: 'hover:border-indigo-500/60', icon: 'text-indigo-400', bg: 'from-indigo-500/15 to-purple-500/15' },
+  { glow: 'rgba(16,185,129,0.35)', border: 'hover:border-emerald-500/60', icon: 'text-emerald-400', bg: 'from-emerald-500/15 to-teal-500/15' },
+  { glow: 'rgba(249,115,22,0.35)', border: 'hover:border-orange-500/60', icon: 'text-orange-400', bg: 'from-orange-500/15 to-red-500/15' },
+  { glow: 'rgba(245,158,11,0.35)', border: 'hover:border-amber-500/60', icon: 'text-amber-400', bg: 'from-amber-500/15 to-yellow-500/15' },
 ];
 
 export default function Services() {
@@ -49,26 +49,26 @@ export default function Services() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, i) => {
             const Icon = icons[service.icon];
             const colors = serviceColors[i];
             return (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.12 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className={`group glass rounded-3xl p-10 border border-white/5 ${colors.border} transition-all duration-400 relative overflow-hidden cursor-default`}
+                transition={{ duration: 0.8, delay: i * 0.15 }}
+                whileHover={{ y: -12, scale: 1.03 }}
+                className={`group glass rounded-3xl p-12 border border-white/5 ${colors.border} transition-all duration-500 relative overflow-hidden cursor-default`}
               >
                 {/* Gradient background on hover */}
                 <motion.div
                   className={`absolute inset-0 bg-gradient-to-br ${colors.bg} opacity-0`}
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: 0.5 }}
                 />
 
                 {/* Glow on hover */}
@@ -76,38 +76,53 @@ export default function Services() {
                   className="absolute inset-0 rounded-3xl"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                  style={{ background: `radial-gradient(circle at 50% 0%, ${colors.glow}, transparent 70%)` }}
+                  transition={{ duration: 0.5 }}
+                  style={{ background: `radial-gradient(circle at 50% 0%, ${colors.glow}, transparent 75%)` }}
+                />
+
+                {/* Floating glow effect */}
+                <motion.div
+                  animate={{ 
+                    opacity: 0,
+                    scale: 1.5,
+                  }}
+                  whileHover={{ 
+                    opacity: 0.8,
+                    scale: 2,
+                  }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute -inset-8 rounded-3xl blur-3xl"
+                  style={{ background: colors.glow }}
                 />
 
                 <div className="relative z-10">
                   <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
-                    className={`inline-flex p-4 rounded-2xl mb-8 border border-white/10 bg-white/5 ${colors.icon}`}
+                    whileHover={{ scale: 1.15, rotate: 8 }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
+                    className={`inline-flex p-5 rounded-2xl mb-10 border border-white/10 bg-white/5 ${colors.icon}`}
                   >
-                    <Icon size={28} />
+                    <Icon size={32} />
                   </motion.div>
 
-                  <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                  <p className="text-gray-400 text-base leading-relaxed mb-8">{service.description}</p>
+                  <h3 className="text-3xl font-bold text-white mb-5 tracking-tight">{service.title}</h3>
+                  <p className="text-gray-400 text-lg leading-relaxed mb-10">{service.description}</p>
 
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     {service.features.map((f) => (
-                      <li key={f} className="flex items-center gap-3 text-base text-gray-500">
-                        <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${colors.icon.replace('text-', 'bg-')}`} />
+                      <li key={f} className="flex items-center gap-4 text-lg text-gray-500">
+                        <div className={`w-2 h-2 rounded-full flex-shrink-0 ${colors.icon.replace('text-', 'bg-')}`} />
                         {f}
                       </li>
                     ))}
                   </ul>
 
                   <motion.div 
-                    className={`mt-8 flex items-center gap-2 text-base font-medium ${colors.icon}`}
-                    initial={{ opacity: 0, x: -10 }}
+                    className={`mt-10 flex items-center gap-3 text-lg font-semibold ${colors.icon}`}
+                    initial={{ opacity: 0, x: -15 }}
                     whileHover={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4 }}
                   >
-                    Learn more <ArrowRight size={16} />
+                    Learn more <ArrowRight size={18} />
                   </motion.div>
                 </div>
               </motion.div>

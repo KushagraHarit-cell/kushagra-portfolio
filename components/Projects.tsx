@@ -165,6 +165,20 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 
         <p className="text-gray-400 text-base leading-relaxed mb-6">{project.description}</p>
 
+        {/* Case Study Details */}
+        {project.problem && project.solution && (
+          <div className="mb-6 space-y-4">
+            <div className="border-t border-white/10 pt-4">
+              <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-2">Problem</h4>
+              <p className="text-sm text-gray-400 leading-relaxed">{project.problem}</p>
+            </div>
+            <div className="border-t border-white/10 pt-4">
+              <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-2">Solution</h4>
+              <p className="text-sm text-gray-400 leading-relaxed">{project.solution}</p>
+            </div>
+          </div>
+        )}
+
         {/* Tech tags */}
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (

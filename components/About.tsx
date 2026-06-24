@@ -30,9 +30,9 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-10 gradient-text tracking-[-0.04em]"
             >
-              Building the web,
+              Building products
               <br />
-              one pixel at a time.
+              that solve problems.
             </motion.h2>
 
             <motion.div
@@ -42,16 +42,13 @@ export default function About() {
               className="space-y-6 text-gray-400 text-base md:text-lg leading-relaxed"
             >
               <p>
-                I'm Kushagra — a freelance web developer. I build premium digital experiences that sit at the intersection of design and engineering.
+                I'm Kushagra — a freelance web developer focused on building premium digital products that drive real business results. I specialize in creating high-performance websites and applications that convert visitors into customers.
               </p>
               <p>
-                My work spans from crafting pixel-perfect landing pages to architecting
-                full-stack applications. I care deeply about performance, animation, and
-                the tiny details that separate good from extraordinary.
+                My approach combines technical excellence with strategic thinking. I don't just build websites — I craft digital experiences that solve business problems, improve user engagement, and deliver measurable outcomes for my clients.
               </p>
               <p>
-                When I'm not pushing pixels, I'm exploring new tools, contributing to open
-                source, or breaking my own code just to see how to fix it better.
+                From concept to deployment, I work closely with businesses to understand their goals and translate them into elegant, scalable solutions. Every project is an opportunity to create something exceptional.
               </p>
             </motion.div>
 

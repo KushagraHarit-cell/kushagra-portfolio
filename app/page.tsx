@@ -5,6 +5,7 @@ import SmoothScroll from '@/components/SmoothScroll';
 import CustomCursor from '@/components/CustomCursor';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import Trust from '@/components/Trust';
 import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
@@ -27,6 +28,7 @@ export default function Home() {
         <Navbar />
         <main>
           <Hero />
+          <Trust />
           <About />
           <Skills />
           <Experience />

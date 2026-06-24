@@ -5,9 +5,9 @@ import { motion, useInView } from 'framer-motion';
 import { skills } from '@/lib/data';
 
 const categoryConfig = {
-  frontend: { label: 'Frontend', color: 'from-blue-500/20 to-purple-500/20', border: 'hover:border-blue-400/50', glow: 'rgba(59, 130, 246, 0.3)' },
-  backend: { label: 'Backend', color: 'from-green-500/20 to-teal-500/20', border: 'hover:border-green-400/50', glow: 'rgba(34, 197, 94, 0.3)' },
-  tools: { label: 'Tools & Platforms', color: 'from-orange-500/20 to-amber-500/20', border: 'hover:border-orange-400/50', glow: 'rgba(249, 115, 22, 0.3)' },
+  frontend: { label: 'Frontend', color: 'from-blue-500/25 to-purple-500/25', border: 'hover:border-blue-400/70', glow: 'rgba(59, 130, 246, 0.5)' },
+  backend: { label: 'Backend', color: 'from-green-500/25 to-teal-500/25', border: 'hover:border-green-400/70', glow: 'rgba(34, 197, 94, 0.5)' },
+  tools: { label: 'Tools & Platforms', color: 'from-orange-500/25 to-amber-500/25', border: 'hover:border-orange-400/70', glow: 'rgba(249, 115, 22, 0.5)' },
 };
 
 const SkillCard = ({ skill, index }: { skill: typeof skills[0]; index: number }) => {
@@ -15,19 +15,19 @@ const SkillCard = ({ skill, index }: { skill: typeof skills[0]; index: number })
   
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
-      whileHover={{ scale: 1.05, y: -8 }}
-      className={`group relative glass rounded-2xl p-6 border border-white/5 ${config.border} transition-all duration-300 cursor-default overflow-hidden`}
+      transition={{ duration: 0.6, delay: index * 0.08 }}
+      whileHover={{ scale: 1.08, y: -12 }}
+      className={`group relative glass rounded-2xl p-7 border border-white/5 ${config.border} transition-all duration-400 cursor-default overflow-hidden`}
     >
       {/* Gradient bg on hover */}
       <motion.div 
         className={`absolute inset-0 bg-gradient-to-br ${config.color} opacity-0`} 
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.4 }}
       />
       
       {/* Glow edge */}
@@ -35,28 +35,43 @@ const SkillCard = ({ skill, index }: { skill: typeof skills[0]; index: number })
         className="absolute inset-0 rounded-2xl"
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        style={{ boxShadow: `0 0 40px ${config.glow} inset` }} 
+        transition={{ duration: 0.4 }}
+        style={{ boxShadow: `0 0 50px ${config.glow} inset` }} 
+      />
+
+      {/* Floating glow effect */}
+      <motion.div
+        animate={{ 
+          opacity: 0,
+          scale: 1.5,
+        }}
+        whileHover={{ 
+          opacity: 0.6,
+          scale: 2,
+        }}
+        transition={{ duration: 0.4 }}
+        className="absolute -inset-4 rounded-2xl blur-2xl"
+        style={{ background: config.glow }}
       />
 
       <div className="relative z-10">
-        <span className="text-lg font-semibold text-white">{skill.name}</span>
+        <span className="text-xl font-bold text-white">{skill.name}</span>
         
         {/* Level bar */}
-        <div className="mt-4 h-2 bg-white/5 rounded-full overflow-hidden">
+        <div className="mt-5 h-2.5 bg-white/5 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: `${skill.level}%` }}
             viewport={{ once: true }}
-            transition={{ duration: 1.5, delay: index * 0.06 + 0.3, ease: 'easeOut' }}
-            className="h-full bg-gradient-to-r from-white/50 to-white/30 rounded-full"
+            transition={{ duration: 1.8, delay: index * 0.08 + 0.4, ease: 'easeOut' }}
+            className="h-full bg-gradient-to-r from-white/60 to-white/40 rounded-full"
           />
         </div>
         <motion.span 
-          className="text-sm text-gray-400 mt-2 block font-medium"
+          className="text-base text-gray-400 mt-3 block font-semibold"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: index * 0.06 + 1.5 }}
+          transition={{ delay: index * 0.08 + 1.8 }}
         >
           {skill.level}%
         </motion.span>
