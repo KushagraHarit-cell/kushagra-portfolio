@@ -4,10 +4,26 @@ import { motion } from 'framer-motion';
 import { Code2, Globe, AtSign, Mail } from 'lucide-react';
 
 const socials = [
-  { icon: Code2, label: 'GitHub', href: 'https://github.com/kushagra', color: 'hover:text-white' },
-  { icon: Globe, label: 'LinkedIn', href: 'https://linkedin.com/in/kushagra', color: 'hover:text-blue-400' },
-  { icon: AtSign, label: 'Instagram', href: 'https://instagram.com/kushagra', color: 'hover:text-pink-400' },
-  { icon: Mail, label: 'Email', href: 'mailto:kushagra@example.com', color: 'hover:text-green-400' },
+  {
+    icon: Code2,
+    label: 'GitHub',
+    href: 'https://github.com/KushagraHarit-cell'
+  },
+  {
+    icon: Globe,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/kushagra-h-011452324'
+  },
+  {
+    icon: Globe,
+    label: 'Portfolio',
+    href: 'https://kushagra-portfolio-zeta.vercel.app'
+  },
+  {
+    icon: Mail,
+    label: 'Email',
+    href: 'mailto:kushagraharit@example.com'
+  },
 ];
 
 const navLinks = [

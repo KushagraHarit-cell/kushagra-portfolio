@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Mail } from 'lucide-react';
 
-const letters = 'Kushagra Harit'.split('');
+const letters = 'KUSHAGRA HARIT'.split('');
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,6 +56,9 @@ export default function Hero() {
           className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] rounded-full blur-[80px] opacity-5"
           style={{ background: 'rgba(255,200,200,0.2)' }}
         />
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/2 left-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/20 blur-[180px]" />
+          </div>
       </motion.div>
 
       {/* Grid lines */}
@@ -69,7 +72,7 @@ export default function Hero() {
 
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+        className="relative z-10 text-center px-6 max-w-7xl mx-auto"
       >
         {/* Badge */}
         <motion.div
@@ -87,7 +90,7 @@ export default function Hero() {
           variants={container}
           initial="hidden"
           animate="visible"
-          className="text-6xl md:text-8xl lg:text-[9rem] font-bold tracking-tight leading-none mb-6 overflow-hidden"
+          className="text-7xl md:text-[10rem] lg:text-[12rem] font-bold tracking-tight leading-none mb-6 overflow-hidden"
           style={{ fontVariantNumeric: 'tabular-nums' }}
         >
           {letters.map((char, i) =>
@@ -112,7 +115,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1.0 }}
           className="text-lg md:text-xl text-gray-400 mb-12 font-light tracking-wide"
         >
-          Freelance Web Developer & Digital Creator
+          Crafting high-performance websites,
+          premium digital experiences &
+          modern web products.
         </motion.p>
 
         {/* CTAs */}

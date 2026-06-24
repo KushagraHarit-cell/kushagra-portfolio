@@ -31,7 +31,11 @@ body {
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
   overflow-x: hidden;
-  cursor: none;
+  @media (min-width:768px){
+ body{
+   cursor:none;
+ }
+}
 }
 
 /* Custom cursor */

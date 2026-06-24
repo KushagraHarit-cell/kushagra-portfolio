@@ -42,7 +42,7 @@ export default function About() {
               className="space-y-5 text-gray-400 text-base leading-relaxed"
             >
               <p>
-                I'm Kushagra — a freelance web developer and digital creator based in India.
+                I'm Kushagra — a freelance web developer
                 I build premium digital experiences that sit at the intersection of design
                 and engineering.
               </p>
