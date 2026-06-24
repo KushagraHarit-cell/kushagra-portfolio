@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { stats } from '@/lib/data';
 
-function useCounter(target: number, duration = 2000, start = false) {
+function useCounter(target: number, duration = 2500, start = false) {
   const [count, setCount] = useState(0);
   useEffect(() => {
     if (!start) return;
@@ -22,22 +22,22 @@ function useCounter(target: number, duration = 2000, start = false) {
 }
 
 function StatItem({ stat, index, started }: { stat: typeof stats[0]; index: number; started: boolean }) {
-  const count = useCounter(stat.value, 2000, started);
+  const count = useCounter(stat.value, 2500, started);
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+      initial={{ opacity: 0, y: 40, scale: 0.9 }}
       animate={started ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: 'easeOut' }}
-      className="text-center"
+      transition={{ duration: 0.8, delay: index * 0.15, ease: 'easeOut' }}
+      className="text-center group"
     >
       <motion.div 
-        className="text-5xl sm:text-6xl md:text-7xl font-bold gradient-text mb-2 tabular-nums"
-        whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.3 }}
+        className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black gradient-text mb-3 tabular-nums tracking-tight"
+        whileHover={{ scale: 1.08 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
       >
         {count}{stat.suffix}
       </motion.div>
-      <div className="text-gray-500 text-xs sm:text-sm tracking-wide">{stat.label}</div>
+      <div className="text-gray-500 text-sm sm:text-base md:text-lg tracking-wide group-hover:text-gray-400 transition-colors">{stat.label}</div>
     </motion.div>
   );
 }
@@ -47,18 +47,21 @@ export default function Stats() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="relative py-20 md:py-24 px-6 overflow-hidden" ref={ref}>
+    <section className="relative py-24 md:py-32 px-6 overflow-hidden" ref={ref}>
       {/* Background accent */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 border-t border-b border-white/5" />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl opacity-5"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl opacity-5"
           style={{ background: 'white' }}
         />
+        {/* Additional gradient glows */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-3xl opacity-5 bg-purple-600" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl opacity-5 bg-blue-600" />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
           {stats.map((stat, i) => (
             <StatItem key={stat.label} stat={stat} index={i} started={inView} />
           ))}
