@@ -25,7 +25,7 @@ export default function Contact() {
     focus:border-white/20 focus:outline-none focus:ring-0 transition-all duration-200 bg-transparent resize-none`;
 
   return (
-    <section id="contact" className="relative py-32 px-6" ref={ref}>
+    <section id="contact" className="relative py-24 md:py-32 px-6" ref={ref}>
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] opacity-5 pointer-events-none"
         style={{ background: 'white' }} />
@@ -36,14 +36,14 @@ export default function Contact() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="mb-4"
         >
-          <span className="text-xs tracking-widest text-gray-500 uppercase">Contact</span>
+          <span className="text-xs tracking-[0.2em] text-gray-500 uppercase">Contact</span>
         </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-4xl md:text-5xl font-bold gradient-text mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4 tracking-tight"
         >
           Let's build something<br />great together.
         </motion.h2>
@@ -52,7 +52,7 @@ export default function Contact() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.25 }}
-          className="text-gray-500 mb-12"
+          className="text-gray-500 mb-10 text-sm md:text-base"
         >
           Have a project in mind or just want to talk code? My inbox is always open.
         </motion.p>
@@ -61,7 +61,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="glass rounded-3xl p-8 md:p-10 border border-white/5"
+          className="glass rounded-3xl p-6 md:p-10 border border-white/5"
         >
           {formState === 'success' ? (
             <motion.div

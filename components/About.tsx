@@ -9,26 +9,26 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="relative py-32 px-6" ref={ref}>
+    <section id="about" className="relative py-24 md:py-32 px-6" ref={ref}>
       <div className="max-w-6xl mx-auto">
         {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-16"
         >
-          <span className="text-xs tracking-widest text-gray-500 uppercase">About</span>
+          <span className="text-xs tracking-[0.2em] text-gray-500 uppercase">About</span>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left - Bio */}
           <div>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold leading-tight mb-8 gradient-text"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-8 gradient-text tracking-tight"
             >
               Building the web,
               <br />
@@ -39,12 +39,10 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-5 text-gray-400 text-base leading-relaxed"
+              className="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed"
             >
               <p>
-                I'm Kushagra — a freelance web developer
-                I build premium digital experiences that sit at the intersection of design
-                and engineering.
+                I'm Kushagra — a freelance web developer. I build premium digital experiences that sit at the intersection of design and engineering.
               </p>
               <p>
                 My work spans from crafting pixel-perfect landing pages to architecting
@@ -62,12 +60,12 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.35 }}
-              className="flex flex-wrap gap-2 mt-8"
+              className="flex flex-wrap gap-2 mt-6"
             >
               {['Next.js', 'TypeScript', 'Design Systems', 'Framer Motion', 'Node.js'].map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs px-3 py-1.5 rounded-full border border-white/10 text-gray-400"
+                  className="text-xs px-3 py-1.5 rounded-full border border-white/10 text-gray-400 hover:border-white/20 transition-colors cursor-default"
                 >
                   {tag}
                 </span>

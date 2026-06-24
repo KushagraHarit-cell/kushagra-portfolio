@@ -37,25 +37,25 @@ export default function Navbar() {
           scrolled ? 'py-3' : 'py-6'
         }`}
       >
-        <div className={`mx-auto max-w-6xl px-6 flex items-center justify-between transition-all duration-500 ${
+        <div className={`mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between transition-all duration-500 ${
           scrolled ? 'backdrop-blur-2xl
           bg-black/40
           border
           border-white/10
-          shadow-2xl py-3 px-6' : ''
+          shadow-2xl py-3 px-4 sm:px-6' : 'py-6 px-4 sm:px-6'
           }`}>
           {/* Logo */}
           <motion.a
             href="#"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-sm font-semibold tracking-widest text-white uppercase cursor-pointer"
+            className="text-sm sm:text-base font-semibold tracking-widest text-white uppercase cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             KH<span className="text-gray-500">.</span>
           </motion.a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <motion.button
                 key={link.label}
@@ -72,7 +72,7 @@ export default function Navbar() {
           <div className="hidden md:flex">
             <motion.button
               onClick={() => handleNav('#contact')}
-              className="text-sm px-5 py-2.5 rounded-full border border-white/10 text-white/80 hover:border-white/30 hover:text-white transition-all duration-200 cursor-pointer"
+              className="text-sm px-4 sm:px-5 py-2.5 rounded-full border border-white/10 text-white/80 hover:border-white/30 hover:text-white transition-all duration-200 cursor-pointer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -83,7 +83,8 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col gap-1.5 cursor-pointer p-1"
+            className="md:hidden flex flex-col gap-1.5 cursor-pointer p-2"
+            aria-label="Toggle menu"
           >
             <motion.span
               animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 8 : 0 }}
@@ -118,7 +119,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.07 }}
                 onClick={() => handleNav(link.href)}
-                className="text-3xl font-light text-white py-4 cursor-pointer hover:text-gray-400 transition-colors"
+                className="text-2xl sm:text-3xl font-light text-white py-4 cursor-pointer hover:text-gray-400 transition-colors"
               >
                 {link.label}
               </motion.button>

@@ -7,8 +7,8 @@ export const projects: Project[] = [
     description: 'A full-stack AI-powered analytics dashboard with real-time data visualization, multi-model support, and enterprise-grade auth.',
     tags: ['Next.js', 'TypeScript', 'OpenAI', 'Prisma', 'PostgreSQL'],
     image: '/projects/ai-dashboard.jpg',
-    demo: '#',
-    github: '#',
+    demo: 'https://github.com/KushagraHarit-cell',
+    github: 'https://github.com/KushagraHarit-cell',
     featured: true,
   },
   {
@@ -17,8 +17,8 @@ export const projects: Project[] = [
     description: 'High-performance e-commerce platform with seamless checkout, inventory management, and Stripe payment integration.',
     tags: ['Next.js', 'Stripe', 'Sanity', 'Tailwind', 'Framer Motion'],
     image: '/projects/ecommerce.jpg',
-    demo: '#',
-    github: '#',
+    demo: 'https://github.com/KushagraHarit-cell',
+    github: 'https://github.com/KushagraHarit-cell',
   },
   {
     id: 3,
@@ -26,8 +26,8 @@ export const projects: Project[] = [
     description: 'Award-worthy creative agency website with micro-interactions, scroll-driven animations, and pixel-perfect design.',
     tags: ['React', 'GSAP', 'Three.js', 'Tailwind', 'Vercel'],
     image: '/projects/agency.jpg',
-    demo: '#',
-    github: '#',
+    demo: 'https://github.com/KushagraHarit-cell',
+    github: 'https://github.com/KushagraHarit-cell',
   },
   {
     id: 4,
@@ -35,8 +35,8 @@ export const projects: Project[] = [
     description: 'Premium personal portfolio with smooth scroll, custom cursor, and cinematic page transitions that leave an impression.',
     tags: ['Next.js', 'Framer Motion', 'Lenis', 'TypeScript', 'Tailwind'],
     image: '/projects/portfolio.jpg',
-    demo: '#',
-    github: '#',
+    demo: 'https://kushagra-portfolio-zeta.vercel.app',
+    github: 'https://github.com/KushagraHarit-cell',
   },
 ];
 

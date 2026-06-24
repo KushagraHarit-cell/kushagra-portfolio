@@ -22,7 +22,7 @@ const socials = [
   {
     icon: Mail,
     label: 'Email',
-    href: 'mailto:kushagraharit@example.com'
+    href: 'mailto:kushagraharit@gmail.com'
   },
 ];
 
@@ -40,9 +40,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/5 py-16 px-6">
+    <footer className="relative border-t border-white/5 py-12 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-8 md:mb-12">
           {/* Brand */}
           <div>
             <div className="text-2xl font-bold text-white mb-3">
@@ -85,7 +85,7 @@ export default function Footer() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.08 }}
-                    className={`flex items-center gap-2 text-sm text-gray-500 ${social.color} transition-colors cursor-pointer`}
+                    className="flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors cursor-pointer"
                   >
                     <Icon size={14} />
                     {social.label}

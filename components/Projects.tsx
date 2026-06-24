@@ -24,13 +24,14 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       transition={{ duration: 0.7, delay: index * 0.1, ease: 'easeOut' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      whileHover={{ y: -8 }}
       className="group relative glass rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500"
       style={{ willChange: 'transform' }}
     >
       {/* Card glow */}
       <motion.div
         animate={{ opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.4 }}
         className={`absolute inset-0 bg-gradient-to-br ${colors.bg}`}
       />
 
@@ -41,8 +42,8 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         {/* Abstract pattern */}
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
-            animate={{ scale: hovered ? 1.1 : 1, rotate: hovered ? 5 : 0 }}
-            transition={{ duration: 0.5 }}
+            animate={{ scale: hovered ? 1.15 : 1, rotate: hovered ? 8 : 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="text-7xl font-black opacity-10 select-none"
             style={{ color: colors.accent }}
           >
@@ -75,17 +76,30 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         {/* Hover overlay */}
         <motion.div
           animate={{ opacity: hovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
           className="absolute inset-0 flex items-center justify-center gap-3"
-          style={{ background: 'rgba(5,5,5,0.6)', backdropFilter: 'blur(4px)' }}
+          style={{ background: 'rgba(5,5,5,0.7)', backdropFilter: 'blur(8px)' }}
         >
-          <a href={project.demo}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-black bg-white hover:bg-gray-100 transition-colors cursor-pointer">
+          <motion.a 
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-black bg-white hover:bg-gray-100 transition-colors cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Live Demo <ArrowUpRight size={14} />
-          </a>
-          <a href={project.github}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white border border-white/20 hover:border-white/40 transition-colors cursor-pointer">
+          </motion.a>
+          <motion.a 
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white border border-white/20 hover:border-white/40 transition-colors cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Code size={14} /> GitHub
-          </a>
+          </motion.a>
         </motion.div>
       </div>
 
@@ -97,7 +111,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           </h3>
           <motion.div
             animate={{ rotate: hovered ? 45 : 0, opacity: hovered ? 1 : 0.3 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
           >
             <ArrowUpRight size={18} className="text-gray-400 flex-shrink-0 mt-0.5" />
           </motion.div>
@@ -126,22 +140,22 @@ export default function Projects() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="projects" className="relative py-32 px-6" ref={ref}>
+    <section id="projects" className="relative py-24 md:py-32 px-6" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="mb-4"
         >
-          <span className="text-xs tracking-widest text-gray-500 uppercase">Work</span>
+          <span className="text-xs tracking-[0.2em] text-gray-500 uppercase">Work</span>
         </motion.div>
 
-        <div className="flex items-end justify-between mb-16">
+        <div className="flex items-end justify-between mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold gradient-text"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text tracking-tight"
           >
             Selected projects.
           </motion.h2>
@@ -157,7 +171,7 @@ export default function Projects() {
           </motion.a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}

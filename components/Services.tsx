@@ -19,22 +19,22 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="services" className="relative py-32 px-6" ref={ref}>
+    <section id="services" className="relative py-24 md:py-32 px-6" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="mb-4"
         >
-          <span className="text-xs tracking-widest text-gray-500 uppercase">Services</span>
+          <span className="text-xs tracking-[0.2em] text-gray-500 uppercase">Services</span>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold gradient-text mb-4 md:mb-0"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4 md:mb-0 tracking-tight"
           >
             What I bring<br />to the table.
           </motion.h2>
@@ -48,7 +48,7 @@ export default function Services() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {services.map((service, i) => {
             const Icon = icons[service.icon];
             const colors = serviceColors[i];
@@ -59,12 +59,15 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                whileHover={{ y: -4 }}
+                whileHover={{ y: -6 }}
                 className={`group glass rounded-3xl p-8 border border-white/5 ${colors.border} transition-all duration-300 relative overflow-hidden cursor-default`}
               >
                 {/* Glow on hover */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
+                <motion.div
+                  className="absolute inset-0 rounded-3xl"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
                   style={{ background: `radial-gradient(circle at 50% 0%, ${colors.glow}, transparent 60%)` }}
                 />
 
@@ -85,9 +88,14 @@ export default function Services() {
                     ))}
                   </ul>
 
-                  <div className={`mt-6 flex items-center gap-2 text-sm ${colors.icon} opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-8px] group-hover:translate-x-0`}>
+                  <motion.div 
+                    className={`mt-6 flex items-center gap-2 text-sm ${colors.icon}`}
+                    initial={{ opacity: 0, x: -8 }}
+                    whileHover={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     Learn more <ArrowRight size={14} />
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
             );

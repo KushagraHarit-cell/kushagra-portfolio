@@ -22,18 +22,22 @@ function useCounter(target: number, duration = 2000, start = false) {
 }
 
 function StatItem({ stat, index, started }: { stat: typeof stats[0]; index: number; started: boolean }) {
-  const count = useCounter(stat.value, 1800, started);
+  const count = useCounter(stat.value, 2000, started);
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={started ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.15 }}
+      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+      animate={started ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.7, delay: index * 0.15, ease: 'easeOut' }}
       className="text-center"
     >
-      <div className="text-6xl md:text-7xl font-bold gradient-text mb-2 tabular-nums">
+      <motion.div 
+        className="text-5xl sm:text-6xl md:text-7xl font-bold gradient-text mb-2 tabular-nums"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.3 }}
+      >
         {count}{stat.suffix}
-      </div>
-      <div className="text-gray-500 text-sm tracking-wide">{stat.label}</div>
+      </motion.div>
+      <div className="text-gray-500 text-xs sm:text-sm tracking-wide">{stat.label}</div>
     </motion.div>
   );
 }
@@ -43,7 +47,7 @@ export default function Stats() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden" ref={ref}>
+    <section className="relative py-20 md:py-24 px-6 overflow-hidden" ref={ref}>
       {/* Background accent */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 border-t border-b border-white/5" />
@@ -54,7 +58,7 @@ export default function Stats() {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
           {stats.map((stat, i) => (
             <StatItem key={stat.label} stat={stat} index={i} started={inView} />
           ))}
