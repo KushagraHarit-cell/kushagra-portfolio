@@ -27,3 +27,18 @@ export interface Stat {
   suffix: string;
   label: string;
 }
+
+export interface Experience {
+  year: string;
+  title: string;
+  company?: string;
+  description: string;
+}
+
+export interface Testimonial {
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+  avatar?: string;
+}

@@ -1,4 +1,4 @@
-import { Project, Skill, Service, Stat } from '@/types';
+import { Project, Skill, Service, Stat, Experience, Testimonial } from '@/types';
 
 export const projects: Project[] = [
   {
@@ -108,5 +108,44 @@ export const timeline = [
     year: '2025',
     title: 'Scaling up',
     description: 'Now crafting high-impact products for clients worldwide. Specializing in performance, animation, and conversion.',
+  },
+];
+
+export const experiences: Experience[] = [
+  {
+    year: '2026',
+    title: 'Freelance Web Developer',
+    description: 'Building premium websites and digital experiences for clients worldwide. Specializing in Next.js, React, and modern web technologies.',
+  },
+  {
+    year: '2025',
+    title: 'Modern Web Projects',
+    description: 'Developed multiple high-performance web applications with focus on UX, animation, and conversion optimization.',
+  },
+  {
+    year: '2024',
+    title: 'React & Next.js Journey',
+    description: 'Mastered React ecosystem and Next.js framework. Built complex applications with server-side rendering and API routes.',
+  },
+];
+
+export const testimonials: Testimonial[] = [
+  {
+    name: 'Alex Johnson',
+    role: 'Founder',
+    company: 'TechStart Inc.',
+    content: 'Kushagra delivered an exceptional website that exceeded our expectations. The attention to detail and performance optimization was outstanding.',
+  },
+  {
+    name: 'Sarah Chen',
+    role: 'Product Manager',
+    company: 'DigitalFlow',
+    content: 'Working with Kushagra was a pleasure. He understood our vision perfectly and delivered a premium product on time.',
+  },
+  {
+    name: 'Michael Brown',
+    role: 'CEO',
+    company: 'GrowthLabs',
+    content: 'The portfolio website Kushagra built for us has significantly improved our conversion rates. Highly recommended!',
   },
 ];

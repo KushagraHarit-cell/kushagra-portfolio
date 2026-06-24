@@ -14,12 +14,41 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Hide on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      
+      setScrolled(currentScrollY > 50);
+      setLastScrollY(currentScrollY);
+
+      // Update active section
+      const sections = navLinks.map(link => link.href);
+      for (const section of sections) {
+        const el = document.querySelector(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const handleNav = (href: string) => {
     setMenuOpen(false);
@@ -31,14 +60,14 @@ export default function Navbar() {
     <>
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? 'py-3' : 'py-6'
         }`}
       >
-        <div className={`mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? 'backdrop-blur-2xl bg-black/40 border border-white/10 shadow-2xl py-3 px-4 sm:px-6' : 'py-6 px-4 sm:px-6'
+        <div className={`mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between transition-all duration-300 ${
+          scrolled ? 'backdrop-blur-2xl bg-black/40 border border-white/10 shadow-2xl py-3 px-4 sm:px-6 rounded-full mx-4' : 'py-6 px-4 sm:px-6'
           }`}>
           {/* Logo */}
           <motion.a
@@ -56,10 +85,20 @@ export default function Navbar() {
               <motion.button
                 key={link.label}
                 onClick={() => handleNav(link.href)}
-                className="text-sm text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer"
+                className={`text-sm transition-colors duration-200 cursor-pointer relative ${
+                  activeSection === link.href ? 'text-white' : 'text-gray-400 hover:text-white'
+                }`}
                 whileHover={{ y: -1 }}
               >
                 {link.label}
+                {activeSection === link.href && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute -bottom-2 left-0 right-0 h-0.5 bg-white"
+                    initial={false}
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
               </motion.button>
             ))}
           </div>
@@ -115,7 +154,9 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.07 }}
                 onClick={() => handleNav(link.href)}
-                className="text-2xl sm:text-3xl font-light text-white py-4 cursor-pointer hover:text-gray-400 transition-colors"
+                className={`text-2xl sm:text-3xl font-light text-white py-4 cursor-pointer transition-colors ${
+                  activeSection === link.href ? 'text-white' : 'text-gray-400 hover:text-white'
+                }`}
               >
                 {link.label}
               </motion.button>
