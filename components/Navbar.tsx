@@ -38,11 +38,7 @@ export default function Navbar() {
         }`}
       >
         <div className={`mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? 'backdrop-blur-2xl
-          bg-black/40
-          border
-          border-white/10
-          shadow-2xl py-3 px-4 sm:px-6' : 'py-6 px-4 sm:px-6'
+          scrolled ? 'backdrop-blur-2xl bg-black/40 border border-white/10 shadow-2xl py-3 px-4 sm:px-6' : 'py-6 px-4 sm:px-6'
           }`}>
           {/* Logo */}
           <motion.a
